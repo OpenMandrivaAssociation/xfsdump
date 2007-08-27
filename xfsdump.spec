@@ -1,12 +1,13 @@
 %define	name	xfsdump
 %define	version	2.2.42
-%define	release	%mkrel 3
+%define	release	%mkrel 4
 
 Summary:	Administrative utilities for the XFS filesystem
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Source0:	ftp://oss.sgi.com/projects/xfs/download/cmd_tars/%{name}_%{version}-1.tar.bz2
+Patch0:		xfsdump-CVE-2007-2654.patch
 License:	GPL
 Group:		System/Kernel and hardware
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -37,6 +38,7 @@ subtrees may be restored from full or partial backups.
 
 %prep
 %setup -q
+%patch0 -p0
 # make it lib64 aware, better make a patch?
 #perl -pi -e "/(libuuid|pkg_s?lib_dir)=/ and s|/lib\b|/%{_lib}|;" configure
 
