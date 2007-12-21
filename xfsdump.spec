@@ -10,6 +10,7 @@ Source0:	ftp://oss.sgi.com/projects/xfs/download/cmd_tars/%{name}_%{version}-1.t
 Patch0:		xfsdump-CVE-2007-2654.patch
 License:	GPL
 Group:		System/Kernel and hardware
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	attr-devel
 BuildRequires:	libext2fs-devel
