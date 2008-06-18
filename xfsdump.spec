@@ -1,6 +1,6 @@
 %define	name	xfsdump
 %define	version	2.2.48
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 
 Summary:	Administrative utilities for the XFS filesystem
 Name:		%{name}
