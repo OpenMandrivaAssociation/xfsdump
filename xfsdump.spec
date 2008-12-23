@@ -1,15 +1,11 @@
-%define	name	xfsdump
-%define	version	2.2.48
-%define	release	%mkrel 2
-
 Summary:	Administrative utilities for the XFS filesystem
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
-Source0:	ftp://oss.sgi.com/projects/xfs/download/cmd_tars/%{name}_%{version}-1.tar.gz
+Name:		xfsdump
+Version:	2.2.48
+Release:	%mkrel 3
+Source0:	ftp://oss.sgi.com/projects/xfs/cmd_tars/%{name}_%{version}-1.tar.gz
+Patch0:		xfsdump-2.2.48-format_not_a_string_literal_and_no_format_arguments.diff
 License:	GPLv2
 Group:		System/Kernel and hardware
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	attr-devel
 BuildRequires:	libext2fs-devel
@@ -17,6 +13,7 @@ BuildRequires:	xfs-devel
 BuildRequires:	dm-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	libtool
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The xfsdump package contains xfsdump, xfsrestore and a number of
@@ -36,14 +33,19 @@ be layered on top of the full backup.  Single files and directory
 subtrees may be restored from full or partial backups.
 
 %prep
+
 %setup -q
+%patch0 -p1 -b .format_not_a_string_literal_and_no_format_arguments
+
 # make it lib64 aware, better make a patch?
 #perl -pi -e "/(libuuid|pkg_s?lib_dir)=/ and s|/lib\b|/%{_lib}|;" configure
 
 %build
+export DEBUG="-DNDEBUG"
+export OPTIMIZER="%{optflags}"
 aclocal && autoconf
 %configure2_5x --libdir=/%{_lib}  --sbindir=/sbin --bindir=/usr/sbin
-%make DEBUG=-DNDEBUG OPTIMIZER="${RPM_OPT_FLAGS}"
+%make DEBUG="-DNDEBUG" OPTIMIZER="%{optflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
