@@ -1,9 +1,8 @@
 Summary:	Administrative utilities for the XFS filesystem
 Name:		xfsdump
-Version:	2.2.48
-Release:	%mkrel 3
-Source0:	ftp://oss.sgi.com/projects/xfs/cmd_tars/%{name}_%{version}-1.tar.gz
-Patch0:		xfsdump-2.2.48-format_not_a_string_literal_and_no_format_arguments.diff
+Version:	3.0.0
+Release:	%mkrel 1
+Source0:	ftp://oss.sgi.com/projects/xfs/cmd_tars/%{name}-%{version}.tar.gz
 License:	GPLv2
 Group:		System/Kernel and hardware
 URL:		http://oss.sgi.com/projects/xfs/
@@ -35,7 +34,6 @@ subtrees may be restored from full or partial backups.
 %prep
 
 %setup -q
-%patch0 -p1 -b .format_not_a_string_literal_and_no_format_arguments
 
 # make it lib64 aware, better make a patch?
 #perl -pi -e "/(libuuid|pkg_s?lib_dir)=/ and s|/lib\b|/%{_lib}|;" configure
