@@ -1,6 +1,6 @@
 Summary:	Administrative utilities for the XFS filesystem
 Name:		xfsdump
-Version:	3.0.0
+Version:	3.0.1
 Release:	%mkrel 1
 Source0:	ftp://oss.sgi.com/projects/xfs/cmd_tars/%{name}-%{version}.tar.gz
 License:	GPLv2
@@ -41,7 +41,6 @@ subtrees may be restored from full or partial backups.
 %build
 export DEBUG="-DNDEBUG"
 export OPTIMIZER="%{optflags}"
-aclocal && autoconf
 %configure2_5x --libdir=/%{_lib}  --sbindir=/sbin --bindir=/usr/sbin
 %make DEBUG="-DNDEBUG" OPTIMIZER="%{optflags}"
 
