@@ -1,7 +1,7 @@
 Summary:	Administrative utilities for the XFS filesystem
 Name:		xfsdump
 Version:	3.0.4
-Release:	%mkrel 2
+Release:	%mkrel 3
 Source0:	ftp://oss.sgi.com/projects/xfs/cmd_tars/%{name}-%{version}.tar.gz
 License:	GPLv2
 Group:		System/Kernel and hardware
