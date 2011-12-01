@@ -45,7 +45,7 @@ export OPTIMIZER="%{optflags}"
 %make DEBUG="-DNDEBUG" OPTIMIZER="%{optflags}"
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 make install DIST_ROOT=%{buildroot}/
 
 # nuke files already packaged as %doc
