@@ -1,18 +1,17 @@
 Summary:	Administrative utilities for the XFS filesystem
 Name:		xfsdump
-Version:	3.0.4
-Release:	%mkrel 3
+Version:	3.1.0
+Release:	%mkrel 1
 Source0:	ftp://oss.sgi.com/projects/xfs/cmd_tars/%{name}-%{version}.tar.gz
 License:	GPLv2
 Group:		System/Kernel and hardware
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	attr-devel
-BuildRequires:	libext2fs-devel
-BuildRequires:	xfs-devel
+BuildRequires:	ext2fs-devel
+BuildRequires:	xfsprogs-devel
 BuildRequires:	dm-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	libtool
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The xfsdump package contains xfsdump, xfsrestore and a number of
@@ -45,7 +44,6 @@ export OPTIMIZER="%{optflags}"
 %make DEBUG="-DNDEBUG" OPTIMIZER="%{optflags}"
 
 %install
-rm -rf %{buildroot}
 make install DIST_ROOT=%{buildroot}/
 
 # nuke files already packaged as %doc
@@ -59,14 +57,8 @@ ln -sf /sbin/restore.xfs %{buildroot}/sbin/xfsrestore
 ln -sf %{_mandir}/man8/xfsdump.8 %{buildroot}%{_mandir}/man8/dump.xfs
 ln -sf %{_mandir}/man8/xfsrestore.8 %{buildroot}%{_mandir}/man8/restore.xfs
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc doc/CHANGES.gz doc/COPYING doc/INSTALL doc/README.xfsdump
 /sbin/*
 %{_sbindir}/*
 %{_mandir}/*/*
-
-
