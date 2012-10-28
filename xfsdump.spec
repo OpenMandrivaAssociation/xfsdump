@@ -9,7 +9,6 @@ URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	attr-devel
 BuildRequires:	ext2fs-devel
 BuildRequires:	xfsprogs-devel
-BuildRequires:	dm-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	libtool
 
