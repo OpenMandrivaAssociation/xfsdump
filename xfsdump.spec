@@ -9,9 +9,9 @@ License:	GPLv2
 Group:		System/Kernel and hardware
 URL:		http://oss.sgi.com/projects/xfs/
 BuildRequires:	attr-devel
-BuildRequires:	ext2fs-devel
+BuildRequires:	pkgconfig(ext2fs) 
 BuildRequires:	xfsprogs-devel
-BuildRequires:	ncurses-devel
+BuildRequires:	pkgconfig(ncursesw)
 BuildRequires:	libtool
 BuildRequires:	gettext-devel
 %if %{with uclibc}
