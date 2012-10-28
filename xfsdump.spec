@@ -13,6 +13,7 @@ BuildRequires:	ext2fs-devel
 BuildRequires:	xfsprogs-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	libtool
+BuildRequires:	gettext-devel
 %if %{with uclibc}
 BuildRequires:	uClibc-devel >= 0.9.33.2-16
 %endif
@@ -71,15 +72,15 @@ popd
 %if %{with uclibc}
 pushd .uclibc
 %uclibc_configure \
-		OPTIMIZER="%{uclibc_cflags}"
+		OPTIMIZER="%{uclibc_cflags}" \
+		--enable-gettext=yes
 %make DEBUG="-DNDEBUG"
 popd
 %endif
 
-export DEBUG="-DNDEBUG"
-export OPTIMIZER="%{optflags}"
-%configure2_5x
-%make DEBUG="-DNDEBUG" OPTIMIZER="%{optflags}"
+%configure2_5x	OPTIMIZER="%{optflags}" \
+		--enable-gettext=yes
+%make DEBUG="-DNDEBUG"
 
 %install
 %if %{with uclibc}
