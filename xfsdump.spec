@@ -100,12 +100,10 @@ make install DIST_ROOT=%{buildroot}
 rm -rf %{buildroot}%{_datadir}/doc/xfsdump/
 
 # for coherency, rename xfsdump|xfsrestore to dump|restore.xfs
-mv %{buildroot}/sbin/xfsdump %{buildroot}/sbin/dump.xfs
-mv %{buildroot}/sbin/xfsrestore %{buildroot}/sbin/restore.xfs
-ln -sf /sbin/dump.xfs %{buildroot}/sbin/xfsdump
-ln -sf /sbin/restore.xfs %{buildroot}/sbin/xfsrestore
-ln -sf %{_mandir}/man8/xfsdump.8 %{buildroot}%{_mandir}/man8/dump.xfs
-ln -sf %{_mandir}/man8/xfsrestore.8 %{buildroot}%{_mandir}/man8/restore.xfs
+ln %{buildroot}/sbin/{xfsdump,dump.xfs}
+ln %{buildroot}/sbin/{xfsrestore,restore.xfs}
+ln -sf xfsdump.8%{_extension} %{buildroot}%{_mandir}/man8/dump.xfs.8%{_extension}
+ln -sf xfsrestore.8%{_extension} %{buildroot}%{_mandir}/man8/restore.xfs.8%{_extension}
 
 %files
 %doc doc/CHANGES.gz doc/COPYING doc/INSTALL doc/README.xfsdump
