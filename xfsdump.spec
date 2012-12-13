@@ -2,18 +2,19 @@
 
 Summary:	Administrative utilities for the XFS filesystem
 Name:		xfsdump
-Version:	3.1.0
-Release:	2
-Source0:	ftp://oss.sgi.com/projects/xfs/cmd_tars/%{name}-%{version}.tar.gz
+Version:	3.1.1
+Release:	1
 License:	GPLv2
 Group:		System/Kernel and hardware
 URL:		http://oss.sgi.com/projects/xfs/
-BuildRequires:	attr-devel
-BuildRequires:	pkgconfig(ext2fs) 
-BuildRequires:	xfsprogs-devel
-BuildRequires:	pkgconfig(ncursesw)
+Source0:	ftp://oss.sgi.com/projects/xfs/cmd_tars/%{name}-%{version}.tar.gz
+
 BuildRequires:	libtool
+BuildRequires:	attr-devel
 BuildRequires:	gettext-devel
+BuildRequires:	xfsprogs-devel
+BuildRequires:	pkgconfig(ext2fs) 
+BuildRequires:	pkgconfig(ncursesw)
 %if %{with uclibc}
 BuildRequires:	uClibc-devel >= 0.9.33.2-16
 %endif
@@ -58,6 +59,7 @@ subtrees may be restored from full or partial backups.
 
 %prep
 %setup -q
+make configure
 %if %{with uclibc}
 mkdir .uclibc
 pushd .uclibc
@@ -84,7 +86,7 @@ popd
 
 %install
 %if %{with uclibc}
-make install DIST_ROOT=%{buildroot} -C .uclibc
+%makeinstall_std -C .uclibc
 # something is fudged here..
 rm %{buildroot}%{uclibc_root}%{_sbindir}/xfs{dump,restore}
 install -m755 .uclibc/dump/xfsdump -D %{buildroot}%{uclibc_root}/sbin/xfsdump
@@ -95,7 +97,7 @@ ln %{buildroot}%{uclibc_root}/sbin/{xfsdump,dump.xfs}
 ln %{buildroot}%{uclibc_root}/sbin/{xfsrestore,restore.xfs}
 %endif
 
-make install DIST_ROOT=%{buildroot}
+%makeinstall_std
 
 # nuke files already packaged as %doc
 rm -rf %{buildroot}%{_datadir}/doc/xfsdump/
@@ -115,3 +117,4 @@ ln -sf xfsrestore.8%{_extension} %{buildroot}%{_mandir}/man8/restore.xfs.8%{_ext
 %files -n uclibc-%{name}
 %{uclibc_root}/sbin/*
 %{uclibc_root}%{_sbindir}/*
+
