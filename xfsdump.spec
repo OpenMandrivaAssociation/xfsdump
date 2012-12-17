@@ -111,7 +111,7 @@ ln -sf xfsrestore.8%{_extension} %{buildroot}%{_mandir}/man8/restore.xfs.8%{_ext
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc doc/CHANGES.gz doc/COPYING doc/INSTALL doc/README.xfsdump
+%doc doc/CHANGES.gz doc/INSTALL doc/README.xfsdump
 /sbin/*
 %{_sbindir}/*
 %{_mandir}/*/*
