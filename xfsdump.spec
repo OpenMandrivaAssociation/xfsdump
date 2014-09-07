@@ -2,8 +2,8 @@
 
 Summary:	Administrative utilities for the XFS filesystem
 Name:		xfsdump
-Version:	3.1.3
-Release:	7
+Version:	3.1.4
+Release:	1
 License:	GPLv2
 Group:		System/Kernel and hardware
 URL:		http://oss.sgi.com/projects/xfs/
@@ -80,7 +80,7 @@ pushd .uclibc
 popd
 %endif
 
-%configure2_5x	OPTIMIZER="%{optflags}" \
+%configure	OPTIMIZER="%{optflags}" \
 		--enable-gettext=yes
 %make DEBUG="-DNDEBUG"
 
@@ -119,4 +119,3 @@ ln -sf xfsrestore.8%{_extension} %{buildroot}%{_mandir}/man8/restore.xfs.8%{_ext
 %files -n uclibc-%{name}
 %{uclibc_root}/sbin/*
 %{uclibc_root}%{_sbindir}/*
-
