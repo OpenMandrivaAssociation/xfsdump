@@ -1,9 +1,9 @@
-%bcond_without	uclibc
+%bcond_with	uclibc
 
 Summary:	Administrative utilities for the XFS filesystem
 Name:		xfsdump
 Version:	3.1.4
-Release:	3
+Release:	4
 License:	GPLv2
 Group:		System/Kernel and hardware
 URL:		http://oss.sgi.com/projects/xfs/
@@ -13,7 +13,7 @@ BuildRequires:	libtool
 BuildRequires:	attr-devel
 BuildRequires:	gettext-devel
 BuildRequires:	xfsprogs-devel
-BuildRequires:	pkgconfig(ext2fs) 
+BuildRequires:	pkgconfig(ext2fs)
 BuildRequires:	pkgconfig(ncursesw)
 %if %{with uclibc}
 BuildRequires:	uClibc-devel >= 0.9.33.2-16
@@ -36,6 +36,7 @@ full backup of a filesystem.  Subsequent incremental backups can then
 be layered on top of the full backup.  Single files and directory
 subtrees may be restored from full or partial backups.
 
+%if %{with uclibc}
 %package -n	uclibc-%{name}
 Summary:	Administrative utilities for the XFS filesystem (uClibc build)
 Group:		System/Kernel and hardware
@@ -56,6 +57,7 @@ xfsrestore performs the inverse function of xfsdump; it can restore a
 full backup of a filesystem.  Subsequent incremental backups can then
 be layered on top of the full backup.  Single files and directory
 subtrees may be restored from full or partial backups.
+%endif
 
 %prep
 %setup -q
@@ -116,6 +118,8 @@ ln -sf xfsrestore.8%{_extension} %{buildroot}%{_mandir}/man8/restore.xfs.8%{_ext
 %{_sbindir}/*
 %{_mandir}/*/*
 
+%if %{with uclibc}
 %files -n uclibc-%{name}
 %{uclibc_root}/sbin/*
 %{uclibc_root}%{_sbindir}/*
+%endif
