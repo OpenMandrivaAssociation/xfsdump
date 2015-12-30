@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   xfsdump-3.1.4.tar.gz: 3c06e0e5c32ce09ebc4c0e903fb6105c53c8177c
+sources:
+  xfsdump-3.1.6.tar.gz: 0e94cfdd42baf03b284c1377efcc716be671cdc5

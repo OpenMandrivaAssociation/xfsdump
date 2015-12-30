@@ -2,8 +2,8 @@
 
 Summary:	Administrative utilities for the XFS filesystem
 Name:		xfsdump
-Version:	3.1.4
-Release:	5
+Version:	3.1.6
+Release:	1
 License:	GPLv2
 Group:		System/Kernel and hardware
 URL:		http://oss.sgi.com/projects/xfs/
@@ -99,7 +99,8 @@ ln %{buildroot}%{uclibc_root}/sbin/{xfsdump,dump.xfs}
 ln %{buildroot}%{uclibc_root}/sbin/{xfsrestore,restore.xfs}
 %endif
 
-%makeinstall_std
+# cannot use makeinstall_std
+make install DESTDIR=%{buildroot}
 
 # nuke files already packaged as %doc
 rm -rf %{buildroot}%{_datadir}/doc/xfsdump/
