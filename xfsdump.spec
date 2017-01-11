@@ -44,7 +44,7 @@ make configure
 %make DEBUG="-DNDEBUG"
 
 %install
-%makeinstall_std DESTDIR=%{buildroot}
+make install DIST_ROOT=%{buildroot}/
 
 # nuke files already packaged as %doc
 rm -rf %{buildroot}%{_datadir}/doc/xfsdump/
