@@ -1,11 +1,11 @@
 Summary:	Administrative utilities for the XFS filesystem
 Name:		xfsdump
-Version:	3.1.6
-Release:	3
+Version:	3.1.8
+Release:	1
 License:	GPLv2
 Group:		System/Kernel and hardware
 URL:		http://oss.sgi.com/projects/xfs/
-Source0:	ftp://oss.sgi.com/projects/xfs/cmd_tars/%{name}-%{version}.tar.gz
+Source0:	https://www.kernel.org/pub/linux/utils/fs/xfs/xfsdump/%{name}-%{version}.tar.gz
 
 BuildRequires:	libtool
 BuildRequires:	attr-devel
@@ -62,4 +62,3 @@ ln -sf xfsrestore.8%{_extension} %{buildroot}%{_mandir}/man8/restore.xfs.8%{_ext
 /sbin/*
 %{_sbindir}/*
 %{_mandir}/*/*
-
