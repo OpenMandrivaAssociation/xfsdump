@@ -1,7 +1,7 @@
 Summary:	Administrative utilities for the XFS filesystem
 Name:		xfsdump
-Version:	3.1.10
-Release:	2
+Version:	3.1.11
+Release:	1
 License:	GPLv2
 Group:		System/Kernel and hardware
 URL:		http://oss.sgi.com/projects/xfs/
