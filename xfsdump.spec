@@ -4,7 +4,7 @@ Version:	3.2.0
 Release:	1
 License:	GPLv2
 Group:		System/Kernel and hardware
-URL:		http://oss.sgi.com/projects/xfs/
+URL:		https://oss.sgi.com/projects/xfs/
 Source0:	https://kernel.org/pub/linux/utils/fs/xfs/xfsdump/%{name}-%{version}.tar.xz
 
 BuildRequires:	libtool
